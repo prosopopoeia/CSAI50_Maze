@@ -154,6 +154,8 @@ def min_val(board):
     for action in action_set:
         max_move = max_val(result(board, action))
         v = min(v, max_move)
+        if v == -1:
+            return v
     return v
 
 
@@ -164,4 +166,6 @@ def max_val(board):
     action_set = actions(board)
     for action in action_set:
         v = max(v, min_val(result(board, action)))
+        if v == 1:
+            return v
     return v # None
